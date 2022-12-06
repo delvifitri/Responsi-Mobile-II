@@ -1,0 +1,32 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>DearDiary</ion-title>
+    <div slot="end">
+      <ion-icon [routerLink]="['/diary-tambah']" ios="add-outline" md="add-sharp" size="large"></ion-icon>&nbsp;
+      <ion-icon (click)="logout()" ios="exit-outline" md="exit-sharp" size="large"></ion-icon>&nbsp;
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">
+        DearDiary
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <div *ngFor="let diary_item of diary" class="single-entry-div">
+    <p class="single-entry-date">
+      {{ diary_item.tanggal }}
+      </p>
+      <p>
+        {{ diary_item.isi }}
+      </p>
+      <div class="action">
+        <a [routerLink]="['/diary-edit/', diary_item.id]" >Edit</a>
+        &nbsp; | &nbsp;
+        <a (click)="deleteDiary(diary_item.id)">Hapus</a>
+      </div>
+  </div>
+</ion-content>
